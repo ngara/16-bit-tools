@@ -1,7 +1,4 @@
 #!/usr/bin/env python3
-# References:
-# * http://www.delorie.com/djgpp/doc/exe/
-# * https://www.fileformat.info/format/exe/corion-mz.htm
 
 # The goal is to disassemble a standard MZ EXE file and properly read it.
 
@@ -23,8 +20,20 @@ class BadFormatException(Exception):
 # H - unsigned short (2-byte integer)
 
 
-def read_pe_exe_header(data):
-    # This is additional information for windows PE files
+def print_hex(data):
+    # Thanks https://stackoverflow.com/questions/9100662
+    # /how-to-print-integers-as-hex-strings-using-json-dumps-in-python
+    print(
+        json.dumps(
+            json.loads(
+                json.dumps(data),
+                parse_int=lambda i: hex(int(i)).upper().replace("X", "x"),
+            ),
+            indent=2,
+            sort_keys=True,
+        )
+    )
+
 
 def read_mz_exe_header(data):
     if data[0:2] != b"MZ":
@@ -32,10 +41,10 @@ def read_mz_exe_header(data):
 
     # MZ EXE Header
     # -------------
-    # See mz_exe_header.txt for more information
+    # See doc/mz_exe_header.md for more information
     exe = {}
+    exe["signature"] = data[0:2].decode("utf-8")
     (
-        exe["signature"],
         exe["bytes_in_last_block"],
         exe["blocks_in_file"],
         exe["num_relocs"],
@@ -49,7 +58,7 @@ def read_mz_exe_header(data):
         exe["cs"],
         exe["reloc_table_offset"],
         exe["overlay_number"],
-    ) = struct.unpack("H" * 14, data[0:28])
+    ) = struct.unpack("<" + "H" * 13, data[2:28])
     # There may be overlay information of varying size at offset 28
 
     # The offset of the beginning of the EXE data is computed like this:
@@ -62,6 +71,8 @@ def read_mz_exe_header(data):
 
     # Relocation table
     # ----------------
+    # See doc/mz_exe_header.md for more information
+    #
     # After the header, there follow the relocation items, which are used to
     # span multpile segments. The relocation items have the following format :
     #       OFFSET              Count TYPE   Description
@@ -76,7 +87,7 @@ def read_mz_exe_header(data):
     # be added to every segment if relocation is done manually.
     exe["reloc_table"] = []
     for i in range(exe["num_relocs"]):
-        loc = exe["reloc_table_offset"] + (i * 2)
+        loc = exe["reloc_table_offset"] + (i * 4)
         (offset, segment) = struct.unpack("HH", data[loc : loc + 4])
         exe["reloc_table"].append({"offset": offset, "segment": segment})
 
@@ -99,4 +110,4 @@ if __name__ == "__main__":
         exe = read_mz_exe_header(data)
 
     # Print out structure
-    print(json.dumps(exe, indent=2, sort_keys=True))
+    print_hex(exe)

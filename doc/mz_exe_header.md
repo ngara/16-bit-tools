@@ -24,5 +24,6 @@ References:
 |  24     |  0x18  |  Relocation table     |  word  |  The (absolute) offset to the relocation table.                                                                                             |
 |  26     |  0x1A  |  Overlay              |  word  |  Value used for overlay management. If zero, this is the main executable.                                                                   |
 |  28     |  0x1C  |  Overlay information  |  N/A   |  Files sometimes contain extra information for the main's program overlay management.                                                       |
+
 [^1]:The size of a page is 512 bytes
 [^2]:The size of a paragraph is 16 bytes

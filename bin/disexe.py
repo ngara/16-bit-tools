@@ -48,6 +48,7 @@ def read_mz_exe_header(data):
         exe["bytes_in_last_block"],
         exe["blocks_in_file"],
         exe["num_relocs"],
+        # Offset of assembled/linked image (the load module)
         exe["header_paragraphs"],
         exe["min_extra_paragraphs"],
         exe["max_extra_paragraphs"],
@@ -105,9 +106,11 @@ if __name__ == "__main__":
         data = _fp.read()
 
     # Check Signature
-    print(data[0:2])
     if data[0:2] == b"MZ":
         exe = read_mz_exe_header(data)
 
     # Print out structure
+    reloc_table = exe["reloc_table"]
+    exe["reloc_table"] = []
     print_hex(exe)
+    print("Relocations: %s" % len(reloc_table))

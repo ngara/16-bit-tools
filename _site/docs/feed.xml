@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>16-bit-tools</title>
+    <description>16-bit-tools is a collection of tools, mostly written in Python, for disassembling and understanding the internal workings of the Intel-8088 CPU and the original IBM PC computer.
+</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Mon, 30 Nov 2020 07:41:06 -0800</pubDate>
+    <lastBuildDate>Mon, 30 Nov 2020 07:41:06 -0800</lastBuildDate>
+    <generator>Jekyll v3.9.0</generator>
+    
+      <item>
+        <title>Starting Out</title>
+        <description>&lt;p&gt;Here I am.  This is the first post on my journey to explore and understand the inner workings of the IBM PC.  Along the way, I plan to develop some tools to help deconstruct and understand whatever it is that I run across.&lt;/p&gt;
+
+&lt;p&gt;The first challenge I have decided to pursue is to attempt to disassemble the PC game XONIX.  It is a simple game, where you are a square attempting to move around the screen, and there is a bouncing square and a ball or two trying to stop you.  It looks something like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://quadrax.wz.cz/app/images/xonix_dos.png&quot; alt=&quot;XONIX.EXE&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The directory listing for the Xonix game looks something like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Directory of C:\GAMES\XT\XONIX\.
+.              &amp;lt;DIR&amp;gt;            27-11-2020 19:35
+..             &amp;lt;DIR&amp;gt;            27-11-2020 19:35
+BASRUN   EXE              31744 05-07-1982 12:00
+HISCORES XNX                256 02-08-1988 23:07
+XONIX    BIN               4104 03-25-1984 14:11
+XONIX    EXE               8576 03-25-1984 12:07
+XONIX    SE                4096 03-25-1984 12:07
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The program is run by typing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;XONIX&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;XONIX.EXE&lt;/code&gt; but it requires the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BASRUN.EXE&lt;/code&gt; file to be available because it was originally a BASIC program compiled with the Microsoft Basic Compiler.  The original source code is not available on the Internet as far as I can tell.  If someone knows where to find it, please &lt;a href=&quot;mailto:ngara23@gmail.com&quot;&gt;contact me&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I will start by running XONIX.EXE with a debugger: the recommended debugger is &lt;a href=&quot;https://sites.google.com/site/pcdosretro/enhdebug&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DEBUGX&lt;/code&gt;&lt;/a&gt;.  I will also be trying to use &lt;a href=&quot;https://www.nasm.us/&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NDISASM&lt;/code&gt;&lt;/a&gt; on it, but I need a tool that will decode the MZ executable format in order to understand the executable better.  That’s where &lt;a href=&quot;https://github.com/ngara/16-bit-tools&quot;&gt;16-bit-tools&lt;/a&gt; will come in handy.&lt;/p&gt;
+
+&lt;p&gt;More to come.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 29 Nov 2020 23:06:00 -0800</pubDate>
+        <link>http://localhost:4000/blog/2020/11/30/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2020/11/30/</guid>
+        
+        
+        <category>blog</category>
+        
+      </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Starting Out | 16-bit-tools</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Starting Out" />
+<meta name="author" content="Nathan Garabedian" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Here I am. This is the first post on my journey to explore and understand the inner workings of the IBM PC. Along the way, I plan to develop some tools to help deconstruct and understand whatever it is that I run across." />
+<meta property="og:description" content="Here I am. This is the first post on my journey to explore and understand the inner workings of the IBM PC. Along the way, I plan to develop some tools to help deconstruct and understand whatever it is that I run across." />
+<link rel="canonical" href="http://localhost:4000/blog/2020/11/30/" />
+<meta property="og:url" content="http://localhost:4000/blog/2020/11/30/" />
+<meta property="og:site_name" content="16-bit-tools" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-11-29T23:06:00-08:00" />
+<script type="application/ld+json">
+{"headline":"Starting Out","dateModified":"2020-11-29T23:06:00-08:00","datePublished":"2020-11-29T23:06:00-08:00","author":{"@type":"Person","name":"Nathan Garabedian"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/logo-home.png"},"name":"Nathan Garabedian"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/2020/11/30/"},"description":"Here I am. This is the first post on my journey to explore and understand the inner workings of the IBM PC. Along the way, I plan to develop some tools to help deconstruct and understand whatever it is that I run across.","@type":"BlogPosting","url":"http://localhost:4000/blog/2020/11/30/","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1><a href="http://localhost:4000/">16-bit-tools</a></h1>
+        
+        
+          <img src="/assets/img/logo-home.png" alt="Logo" />
+        
+
+        <p>16-bit-tools is a collection of tools, mostly written in Python, for disassembling and understanding the internal workings of the Intel-8088 CPU and the original IBM PC computer.
+</p>
+
+        
+
+        
+
+        
+      </header>
+      <section>
+
+      <h2 class="page-heading"><a href="/blog/">16-bit-tools Blog</a></h2>
+
+<h3>Starting Out</h3>
+
+<p>Here I am.  This is the first post on my journey to explore and understand the inner workings of the IBM PC.  Along the way, I plan to develop some tools to help deconstruct and understand whatever it is that I run across.</p>
+
+<p>The first challenge I have decided to pursue is to attempt to disassemble the PC game XONIX.  It is a simple game, where you are a square attempting to move around the screen, and there is a bouncing square and a ball or two trying to stop you.  It looks something like this:</p>
+
+<p><img src="http://quadrax.wz.cz/app/images/xonix_dos.png" alt="XONIX.EXE" /></p>
+
+<p>The directory listing for the Xonix game looks something like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Directory of C:\GAMES\XT\XONIX\.
+.              &lt;DIR&gt;            27-11-2020 19:35
+..             &lt;DIR&gt;            27-11-2020 19:35
+BASRUN   EXE              31744 05-07-1982 12:00
+HISCORES XNX                256 02-08-1988 23:07
+XONIX    BIN               4104 03-25-1984 14:11
+XONIX    EXE               8576 03-25-1984 12:07
+XONIX    SE                4096 03-25-1984 12:07
+</code></pre></div></div>
+
+<p>The program is run by typing <code class="language-plaintext highlighter-rouge">XONIX</code> or <code class="language-plaintext highlighter-rouge">XONIX.EXE</code> but it requires the <code class="language-plaintext highlighter-rouge">BASRUN.EXE</code> file to be available because it was originally a BASIC program compiled with the Microsoft Basic Compiler.  The original source code is not available on the Internet as far as I can tell.  If someone knows where to find it, please <a href="mailto:ngara23@gmail.com">contact me</a>.</p>
+
+<p>I will start by running XONIX.EXE with a debugger: the recommended debugger is <a href="https://sites.google.com/site/pcdosretro/enhdebug"><code class="language-plaintext highlighter-rouge">DEBUGX</code></a>.  I will also be trying to use <a href="https://www.nasm.us/"><code class="language-plaintext highlighter-rouge">NDISASM</code></a> on it, but I need a tool that will decode the MZ executable format in order to understand the executable better.  That’s where <a href="https://github.com/ngara/16-bit-tools">16-bit-tools</a> will come in handy.</p>
+
+<p>More to come.</p>
+
+
+<p class="view"><a href="https://github.com/ngara">Nathan Garabedian</a><br/>
+	<small>Nov 29, 2020</small>
+</p>
+
+
+
+      </section>
+      <footer>
+        
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="/assets/js/scale.fix.js"></script>
+    
+  </body>
+</html>

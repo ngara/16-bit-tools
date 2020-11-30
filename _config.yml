@@ -1,0 +1,55 @@
+title: 16-bit-tools
+domain: restivetechnology.com/16-bit-tools
+tagline: Tools for understanding IBM PC and PC XT files and data structures
+description: >
+  16-bit-tools is a collection of tools, mostly written in Python, for
+  disassembling and understanding the internal workings of the Intel-8088 CPU
+  and the original IBM PC computer.
+author: Nathan Garabedian
+logo: /assets/img/logo-home.png
+data_dir: configs
+left_brace: "{"
+right_brace: "}"
+encoding: UTF-8
+theme: jekyll-theme-minimal
+
+exclude:
+  - Makefile
+  - Gemfile
+  - Gemfile.lock
+  - gulpfile.js
+  - README.md
+  - TODO.md
+  - "*.log"
+  - tmp
+  - "**/archive"
+  - "**/private"
+  - /package*.json
+  - /.history
+  - /.vscode
+  - /private
+  - /node_modules
+  - /bin
+
+github:
+  owner_name: "ngara"
+  owner_url: https://github.com/ngara
+  repository_url: https://github.com/ngara/16-bit-tools
+  pages: https://github.com/ngara/16-bit-tools/tree/gh-pages
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: highlight
+#   disable: true
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-redirect-from
+  - jekyll-include-cache
+
+# Other main site data can go here
+config1:
+  config2: asdf
